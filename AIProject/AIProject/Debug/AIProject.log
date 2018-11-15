@@ -1,0 +1,4 @@
+﻿  Game.cpp
+c:\users\gjohnson1\documents\visual studio 2017\projects\aiproject\aiproject\player.h(24): warning C4244: '=': conversion from 'float' to 'SHORT', possible loss of data
+c:\users\gjohnson1\documents\visual studio 2017\projects\aiproject\aiproject\player.h(25): warning C4244: '=': conversion from 'float' to 'SHORT', possible loss of data
+  AIProject.vcxproj -> C:\Users\gjohnson1\Documents\Visual Studio 2017\Projects\AIProject\Debug\AIProject.exe
