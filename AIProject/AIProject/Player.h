@@ -24,6 +24,7 @@ namespace PlayerInfo
 		}
 		void MoveChar()
 		{
+			std::cout << " ";
 			COORD coord;
 			coord.X = playerPos->x;
 			coord.Y = playerPos->y;
@@ -31,26 +32,44 @@ namespace PlayerInfo
 		}
 		void gotoxy()
 		{
+			RemoveCurrentPos();
+			std::cout << " ";
 			COORD coord;
 			coord.X = playerPos->x;
 			coord.Y = playerPos->y;
 			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 			std::cout << letter;// the player
 		}
-		void MovePlayer(Vector2* pos) // IT WORKS POGGER
+		void RemoveCurrentPos()
+		{
+			COORD coord;
+			coord.X = lastPos.x;
+			coord.Y = lastPos.y;
+			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+			std::cout << "   ";// the player
+		}
+
+		void MovePlayer(Vector2* pos, Player &enemy) // IT WORKS POGGER
 		{
 			// Move towards methods
 			if (playerPos->x == pos->x && playerPos->y == pos->y) // werid
-			{ 
+			{
 				//std::cout << *playerPos << std::endl;
+				enemy.playerPos->RandomVector();
+				enemy.ChangePlayerPos(enemy.playerPos);
 				return;
+
 			}
 			gotoxy();
 			//std::cout << *playerPos << " : Point we are going to : " << *pos << std::endl;
+			lastPos = *playerPos;
+
 			playerPos->MoveTowards(pos);
+
 		}
 	public:
 		Vector2* playerPos;
+		Vector2 lastPos;
 		char letter;
 		enum PlayerAiStates
 		{

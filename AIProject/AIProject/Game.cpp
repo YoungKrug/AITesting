@@ -13,7 +13,7 @@ namespace PlayerInfo
 		while (1)
 		{
 			InitUpdate();
-			player->MovePlayer(enemy->playerPos); // asd
+			player->MovePlayer(enemy->playerPos, *enemy); // asd
 			
 			
 			// Updater

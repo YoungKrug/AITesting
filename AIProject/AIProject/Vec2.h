@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
+#include <time.h>
 #include "Vec2.h"
-#include "TileMap.h"
 namespace PlayerInfo
 {
 	class Vector2
@@ -13,10 +13,7 @@ namespace PlayerInfo
 			x = a;
 			y = b;
 		}
-		Vector2()
-		{
-
-		}
+		Vector2() {}
 		void MoveTowards(Vector2 *position) // WIth a .1
 		{
 			Vector2 *newPos = new Vector2(*this);
@@ -51,11 +48,17 @@ namespace PlayerInfo
 			// Check whether the position is already taken.. Collision
 			*this = *newPos;
 			//if (game->isCoordinateTaken(*newPos))
-		//	{
-				//find new position
-		//	}
-		//	std::cout << *this << std::endl;
+			//	{
+			//find new position
+			//	}
+			//	std::cout << *this << std::endl;
 
+		}
+		Vector2& RandomVector()
+		{
+			std::srand(time(NULL));
+			*this = Vector2(rand() % 50 + 5, rand() % 75 + 5);
+			return *this;
 		}
 		Vector2& Add(const Vector2 &other)
 		{
@@ -138,3 +141,4 @@ namespace PlayerInfo
 //	return left.add(right);
 
 //}
+
